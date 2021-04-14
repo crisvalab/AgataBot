@@ -1,0 +1,6 @@
+*.DS_Store
+.env
+.vscode
+GPT2-API/checkpoint/run1/*
+GPT2-API/datasets/*
+GPT2-API/models/*
