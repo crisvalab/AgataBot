@@ -2,5 +2,6 @@
 .env
 .vscode
 GPT2-API/checkpoint/run1/*
-GPT2-API/datasets/*
-GPT2-API/models/*
+GPT2-API/datasets/raw/
+GPT2-API/datasets/encoded/
+GPT2-API/models/355M/
