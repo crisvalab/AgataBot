@@ -9,7 +9,7 @@ API_TRANSLATE = 'http://0.0.0.0:3002/'
 API_AGATA = 'http://0.0.0.0:3001/'
 
 API_TRANSLATE_TO_ES = f'{API_TRANSLATE}translator/es/'
-API_TRANSLATE_TO_EN = f'{API_TRANSLATE}translator/es/'
+API_TRANSLATE_TO_EN = f'{API_TRANSLATE}translator/en/'
 API_OBTAIN_ANSWER = f'{API_AGATA}agata/answer/'
 
 def throw_request_error(req):
@@ -45,7 +45,7 @@ def generate_english_answer():
 def generate_spanish_answer():
     if request.method == 'POST':
         request_data = request.get_json() #{'id': 3, 'question': ''}
-        id, question = str(request_data['id']), str(request_data['question']) 
+        id, question = str(request_data['id']), str(request_data['question'])
         req = requests.post(url=API_TRANSLATE_TO_EN, data={'sentence': question})
         if req.status_code == 200:
             sentence_to_en = req.json()['translation'] #This is the translated sentence.
@@ -73,4 +73,4 @@ def route_not_found(e):
     return jsonify(error=str(e)), 404
 
 if __name__ == '__main__':
-    app.run(port=3000, host=socket.gethostbyname(socket.gethostname()))
+    app.run(port=3000, host='0.0.0.0')
