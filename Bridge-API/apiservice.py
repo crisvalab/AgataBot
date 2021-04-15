@@ -5,12 +5,9 @@ from flask_restful import Api
 
 app = Flask(__name__)
 
-API_TRANSLATE = 'http://0.0.0.0:3002/'
-API_AGATA = 'http://0.0.0.0:3001/'
-
-API_TRANSLATE_TO_ES = f'{API_TRANSLATE}translator/es/'
-API_TRANSLATE_TO_EN = f'{API_TRANSLATE}translator/en/'
-API_OBTAIN_ANSWER = f'{API_AGATA}agata/answer/'
+API_TRANSLATE_TO_ES = 'http://0.0.0.0:3002/translator/es/'
+API_TRANSLATE_TO_EN = 'http://0.0.0.0:3002/translator/en/'
+API_OBTAIN_ANSWER = 'http://0.0.0.0:3001/agata/answer/'
 
 def throw_request_error(req):
     return jsonify({
@@ -60,7 +57,7 @@ def generate_spanish_answer():
                         'question_to_en': str(sentence_to_en),
                         'answer': str(answer),
                         'answer_to_es': str(sentence_to_es)
-                    }), 200
+                    })
                 else:
                     throw_request_error(req=req)
             else:
