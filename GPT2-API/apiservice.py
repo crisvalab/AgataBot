@@ -47,7 +47,7 @@ async def generate_answer(request):
 @app.exception_handler(404)
 def route_not_found(request, exc):
     return JSONResponse(content={
-        'code': exec.status_code,
+        'code': 404,
         'message': 'The route you requested not found. Please, try again or contact with an administrator.'
     }, status_code=exc.status_code)
 
