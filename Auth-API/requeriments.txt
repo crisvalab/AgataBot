@@ -1,5 +1,0 @@
-Flask  
-datetime 
-uuid
-Flask-SQLAlchemy
-PyJWT
