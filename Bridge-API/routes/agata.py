@@ -1,9 +1,10 @@
 from flask import Blueprint, request, jsonify
+from .router import RouterManager
 import requests
 
-API_OBTAIN_ANSWER = 'http://0.0.0.0:3001/agata/answer/'
+SOURCE_AGATA_API = 'http://0.0.0.0:3001/agata/answer/'
 
-class AgataRouter():
+class AgataRouter(RouterManager):
 
     def __init__(self, name):
         self.name = name
@@ -17,7 +18,7 @@ class AgataRouter():
             if request.method == 'POST':
                 request_data = request.get_json() #{'id': 3, 'question': ''}
                 id, question = str(request_data['id']), str(request_data['question']) 
-                req = requests.post(url=API_OBTAIN_ANSWER, json={'id': id, 'question': question})
+                req = requests.post(url=SOURCE_AGATA_API, json={'id': id, 'question': question})
                 if req.status_code == 200:
                     answer = req.json()['answer']
                     return jsonify({
