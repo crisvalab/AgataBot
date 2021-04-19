@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from .router import RouterManager
+from router import RouterManager
 import requests
 
 SOURCE_AGATA_API = 'http://0.0.0.0:3001/agata/answer/'

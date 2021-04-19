@@ -1,11 +1,8 @@
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from routes.agata import AgataRouter
-import uuid
-import jwt
-import datetime
+from routes.auth import AuthRouter
 import os
 import requests
 
@@ -15,16 +12,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///home/cristian/Desktop/Agata
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
-agata_router = AgataRouter('AgataRouter')
-
-API_TRANSLATE_TO_ES = 'http://0.0.0.0:3002/translator/es/'
-API_TRANSLATE_TO_EN = 'http://0.0.0.0:3002/translator/en/'
-
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     public_id = db.Column(db.Integer)
     email = db.Column(db.String(150))
     password = db.Column(db.String(50))
+
+API_TRANSLATE_TO_ES = 'http://0.0.0.0:3002/translator/es/'
+API_TRANSLATE_TO_EN = 'http://0.0.0.0:3002/translator/en/'
 
 def token_required(f):
     @wraps(f)
@@ -61,40 +56,6 @@ def home_route():
         'developer': 'Cristian Valero Abundio'
     })
 
-@app.route('/register/', methods=['POST'])
-def signup_user():
-    if request.is_json():
-        data = request.get_json()  
-        hashed_password = generate_password_hash(data['password'], method='sha256')
-        new_user = Users(public_id=str(uuid.uuid4()), email=data['email'], password=hashed_password) 
-        db.session.add(new_user)  
-        db.session.commit()    
-        return jsonify({
-            'message': 'Registered successfully.'
-        }), 200
-    return jsonify({
-        'message': 'You must send json data only.'
-    }), 401
-
-@app.route('/login/', methods=['POST'])  
-def login_user(): 
-    auth = request.authorization   
-    if not auth or not auth.username or not auth.password:  
-        return make_response('Could not verify.', 401, {'WWW.Authentication': 'Basic realm: "Login required."'})    
-    user = Users.query.filter_by(email=auth.username).first()
-    if user != None:
-        if check_password_hash(user.password, auth.password):  
-            token = jwt.encode({
-                'public_id': user.public_id,
-                'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
-                }, app.config['SECRET_KEY']) 
-            return jsonify({'token' : token})
-    else:
-        return jsonify({
-            "message": "Requested user not found."
-        })
-    return make_response('Could not verify',  401, {'WWW.Authentication': 'Basic realm: "Login required."'})
-
 @app.errorhandler(404)
 def route_not_found(exc):
     return jsonify({
@@ -102,6 +63,10 @@ def route_not_found(exc):
         'message': 'The route you requested not found. Please, try again or contact with an administrator.'
     })
 
+auth_router = AuthRouter('AuthRouter', db, Users)
+agata_router = AgataRouter('AgataRouter')
+
 if __name__ == '__main__':
+    app.register_blueprint(auth_router.config_routes(app))
     app.register_blueprint(agata_router.config_routes(token_required, throw_request_error))
     app.run(host='0.0.0.0', port=3005) #when finish, change port to 3000, 3005 is only for testing in production
