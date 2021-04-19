@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
+from routes.agata import AgataRouter
 import uuid
 import jwt
 import datetime
@@ -14,9 +15,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///home/cristian/Desktop/Agata
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
+agata_router = AgataRouter('AgataRouter')
+
 API_TRANSLATE_TO_ES = 'http://0.0.0.0:3002/translator/es/'
 API_TRANSLATE_TO_EN = 'http://0.0.0.0:3002/translator/en/'
-API_OBTAIN_ANSWER = 'http://0.0.0.0:3001/agata/answer/'
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -46,9 +48,9 @@ def token_required(f):
         return f(current_user, *args, **kwargs)
     return decorator
 
-def throw_request_error():
+def throw_request_error(message):
     return jsonify({
-        'message': 'The intern request not be valid.'
+        'message': message
     })
 
 @app.route('/', methods=['GET', 'POST'])
@@ -93,22 +95,6 @@ def login_user():
         })
     return make_response('Could not verify',  401, {'WWW.Authentication': 'Basic realm: "Login required."'})
 
-@app.route('/agata/conversate/en/', methods=['POST'])
-@token_required
-def generate_english_answer(current_user):
-    if request.method == 'POST':
-        request_data = request.get_json() #{'id': 3, 'question': ''}
-        id, question = str(request_data['id']), str(request_data['question']) 
-        req = requests.post(url=API_OBTAIN_ANSWER, json={'id': id, 'question': question})
-        if req.status_code == 200:
-            answer = req.json()['answer']
-            return jsonify({
-                'question': str(question),
-                'answer': str(answer)
-            })
-        else:
-            throw_request_error()
-
 @app.errorhandler(404)
 def route_not_found(exc):
     return jsonify({
@@ -117,4 +103,5 @@ def route_not_found(exc):
     })
 
 if __name__ == '__main__':
+    app.register_blueprint(agata_router.config_routes(token_required, throw_request_error))
     app.run(host='0.0.0.0', port=3005) #when finish, change port to 3000, 3005 is only for testing in production

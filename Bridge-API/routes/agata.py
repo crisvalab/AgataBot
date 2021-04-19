@@ -1,0 +1,30 @@
+from flask import Blueprint, request, jsonify
+import requests
+
+API_OBTAIN_ANSWER = 'http://0.0.0.0:3001/agata/answer/'
+
+class AgataRouter():
+
+    def __init__(self, name):
+        self.name = name
+
+    def config_routes(self, token_required, throw_request_error):
+        blueprint = Blueprint(self.name, __name__)
+
+        @blueprint.route('/agata/conversate/en/', methods=['POST'])
+        @token_required
+        def generate_english_answer(current_user):
+            if request.method == 'POST':
+                request_data = request.get_json() #{'id': 3, 'question': ''}
+                id, question = str(request_data['id']), str(request_data['question']) 
+                req = requests.post(url=API_OBTAIN_ANSWER, json={'id': id, 'question': question})
+                if req.status_code == 200:
+                    answer = req.json()['answer']
+                    return jsonify({
+                        'question': str(question),
+                        'answer': str(answer)
+                    })
+                else:
+                    throw_request_error('Intern request error.')
+
+        return blueprint
