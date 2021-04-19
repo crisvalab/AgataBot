@@ -25,7 +25,8 @@ class AgataRouter(RouterManager):
                         'question': str(question),
                         'answer': str(answer)
                     })
-                else:
-                    throw_request_error('Intern request error.')
+            return jsonify({
+                'message': 'Request not valid or internal error. Pplease contact to the administrator.'
+            })
 
         return blueprint

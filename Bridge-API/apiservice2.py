@@ -43,11 +43,6 @@ def token_required(f):
         return f(current_user, *args, **kwargs)
     return decorator
 
-def throw_request_error(message):
-    return jsonify({
-        'message': message
-    })
-
 @app.route('/', methods=['GET', 'POST'])
 def home_route():
     return jsonify({
@@ -68,5 +63,5 @@ agata_router = AgataRouter('AgataRouter')
 
 if __name__ == '__main__':
     app.register_blueprint(auth_router.config_routes(app))
-    app.register_blueprint(agata_router.config_routes(token_required, throw_request_error))
+    app.register_blueprint(agata_router.config_routes(token_required))
     app.run(host='0.0.0.0', port=3005) #when finish, change port to 3000, 3005 is only for testing in production
