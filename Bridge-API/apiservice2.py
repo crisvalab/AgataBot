@@ -9,7 +9,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Th1s1ss3cr3t'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///home/cristian/Desktop/AgataBot-v2/AgataBot/authapi.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///home/cristian/Desktop/AgataBot-v2/AgataBot/Bridge-API/authapi.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
@@ -79,5 +79,6 @@ def route_not_found(exc):
         'code': 404,
         'message': 'The route you requested not found. Please, try again or contact with an administrator.'
     })
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3005)
