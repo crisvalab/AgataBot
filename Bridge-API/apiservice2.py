@@ -81,4 +81,4 @@ def route_not_found(exc):
     })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3005)
+    app.run(host='0.0.0.0', port=3005) #when finish, change port to 3000, 3005 is only for testing in production
