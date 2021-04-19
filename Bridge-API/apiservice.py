@@ -1,4 +1,3 @@
-import socket
 import requests
 import uvicorn
 from starlette.applications import Starlette
