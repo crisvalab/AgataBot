@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request
 from functools import wraps
 import jwt
 
-#
 class RouterManager():
 
     def __init__(self, name, app, db, users, api_adress_sources):
