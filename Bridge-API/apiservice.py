@@ -26,6 +26,11 @@ class Users(db.Model):
     email = db.Column(db.String(150))
     password = db.Column(db.String(50))
 
+routers = [
+    AuthRouter('AuthRouter', app, db, Users, API_ADRESS_SOURCES),
+    AgataRouter('AgataRouter', app, db, Users, API_ADRESS_SOURCES)
+]
+
 @app.route('/', methods=['GET', 'POST'])
 def home_route():
     return jsonify({
@@ -42,9 +47,6 @@ def route_not_found(exc):
     }), 404
 
 if __name__ == '__main__':
-    auth_router = AuthRouter('AuthRouter', app, db, Users, API_ADRESS_SOURCES)
-    agata_router = AgataRouter('AgataRouter', app, db, Users, API_ADRESS_SOURCES)
-
-    app.register_blueprint(auth_router.config_routes())
-    app.register_blueprint(agata_router.config_routes())
+    for router in routers:
+         app.register_blueprint(router.config_routes())
     app.run(host='0.0.0.0', port=3000) #when finish, change port to 3000, 3005 is only for testing in production
