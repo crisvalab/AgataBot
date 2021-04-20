@@ -1,10 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from functools import wraps
 from routes.agata import AgataRouter
 from routes.auth import AuthRouter
-import os
-import requests
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Th1s1ss3cr3t'
@@ -21,28 +18,6 @@ class Users(db.Model):
 API_TRANSLATE_TO_ES = 'http://0.0.0.0:3002/translator/es/'
 API_TRANSLATE_TO_EN = 'http://0.0.0.0:3002/translator/en/'
 
-def token_required(f):
-    @wraps(f)
-    def decorator(*args, **kwargs):
-        token = None
-        if 'x-access-tokens' in request.headers:
-            token = request.headers['x-access-tokens']
-        if not token:
-            return jsonify({
-                'message': 'A valid token is missing.'
-            })
-            
-        try:
-            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-            current_user = Users.query.filter_by(public_id=data['public_id']).first()
-        except:
-            return jsonify({
-                'message': 'Invalid token.'
-            })
-
-        return f(current_user, *args, **kwargs)
-    return decorator
-
 @app.route('/', methods=['GET', 'POST'])
 def home_route():
     return jsonify({
@@ -58,10 +33,10 @@ def route_not_found(exc):
         'message': 'The route you requested not found. Please, try again or contact with an administrator.'
     })
 
-auth_router = AuthRouter('AuthRouter', db, Users)
-agata_router = AgataRouter('AgataRouter')
+auth_router = AuthRouter('AuthRouter', app, db, Users)
+agata_router = AgataRouter('AgataRouter', app, db, Users)
 
 if __name__ == '__main__':
-    app.register_blueprint(auth_router.config_routes(app))
-    app.register_blueprint(agata_router.config_routes(token_required))
+    app.register_blueprint(auth_router.config_routes())
+    app.register_blueprint(agata_router.config_routes())
     app.run(host='0.0.0.0', port=3005) #when finish, change port to 3000, 3005 is only for testing in production

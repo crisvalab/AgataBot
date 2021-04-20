@@ -1,19 +1,19 @@
-from flask import Blueprint, request, jsonify
 from router import RouterManager
+from flask import Blueprint, request, jsonify
 import requests
 
 SOURCE_AGATA_API = 'http://0.0.0.0:3001/agata/answer/'
 
 class AgataRouter(RouterManager):
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, name, app, db, users):
+        RouterManager.__init__(self, name, app, db, users)
 
-    def config_routes(self, token_required, throw_request_error):
+    def config_routes(self):
         blueprint = Blueprint(self.name, __name__)
 
         @blueprint.route('/agata/conversate/en/', methods=['POST'])
-        @token_required
+        @self.token_required
         def generate_english_answer(current_user):
             if request.method == 'POST':
                 request_data = request.get_json() #{'id': 3, 'question': ''}
