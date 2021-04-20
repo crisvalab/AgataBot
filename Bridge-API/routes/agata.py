@@ -26,7 +26,7 @@ class AgataRouter(RouterManager):
 
         @self.blueprint.route('/agata/conversate/es/', methods=['POST'])
         @self.token_required
-        def generate_spanish_answer(request):
+        def generate_spanish_answer(current_user):
             if request.method == 'POST':
                 request_data = request.get_json() #{'id': '3', 'question': 'Hola, ¿como te llamas?'}
                 id, question = str(request_data['id']), str(request_data['question'])
