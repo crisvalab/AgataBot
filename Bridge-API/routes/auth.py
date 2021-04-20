@@ -14,13 +14,14 @@ class AuthRouter(RouterManager):
         @self.blueprint.route('/register/', methods=['POST'])
         def signup_user():
             data = request.get_json()
-            hashed_password = generate_password_hash(data['password'], method='sha256')
-            new_user = self.users(public_id=str(uuid.uuid4()), email=data['email'], password=hashed_password) 
-            self.db.session.add(new_user)
-            self.db.session.commit()
-            return jsonify({
-                'message': 'Registered successfully.'
-            }), 200
+            user = self.users.query.filter_by(email=data['email']).first()
+            if user == None:
+                hashed_password = generate_password_hash(data['password'], method='sha256')
+                new_user = self.users(public_id=str(uuid.uuid4()), email=data['email'], password=hashed_password) 
+                self.db.session.add(new_user)
+                self.db.session.commit()
+                return jsonify({ 'message': 'Registered successfully.' }), 200
+            return jsonify({ 'message': 'User already exists. Please, try again with a diferent email.' }), 401
 
         @self.blueprint.route('/login/', methods=['POST'])  
         def login_user(): 
