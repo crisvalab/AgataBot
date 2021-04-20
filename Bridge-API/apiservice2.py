@@ -3,7 +3,18 @@ from flask_sqlalchemy import SQLAlchemy
 from routes.agata import AgataRouter
 from routes.auth import AuthRouter
 
+API_ADRESS_SOURCES = {
+    'translator': {
+        'es': 'http://0.0.0.0:3002/translator/es/',
+        'en': 'http://0.0.0.0:3002/translator/en/'
+    },
+    'agata': {
+        'answer': 'http://0.0.0.0:3001/agata/answer/'
+    }
+}
+
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 app.config['SECRET_KEY'] = 'Th1s1ss3cr3t'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///home/cristian/Desktop/AgataBot-v2/AgataBot/Bridge-API/authapi.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -14,9 +25,6 @@ class Users(db.Model):
     public_id = db.Column(db.Integer)
     email = db.Column(db.String(150))
     password = db.Column(db.String(50))
-
-API_TRANSLATE_TO_ES = 'http://0.0.0.0:3002/translator/es/'
-API_TRANSLATE_TO_EN = 'http://0.0.0.0:3002/translator/en/'
 
 @app.route('/', methods=['GET', 'POST'])
 def home_route():
@@ -33,10 +41,10 @@ def route_not_found(exc):
         'message': 'The route you requested not found. Please, try again or contact with an administrator.'
     })
 
-auth_router = AuthRouter('AuthRouter', app, db, Users)
-agata_router = AgataRouter('AgataRouter', app, db, Users)
-
 if __name__ == '__main__':
+    auth_router = AuthRouter('AuthRouter', app, db, Users, API_ADRESS_SOURCES)
+    agata_router = AgataRouter('AgataRouter', app, db, Users, API_ADRESS_SOURCES)
+
     app.register_blueprint(auth_router.config_routes())
     app.register_blueprint(agata_router.config_routes())
     app.run(host='0.0.0.0', port=3005) #when finish, change port to 3000, 3005 is only for testing in production

@@ -7,8 +7,8 @@ import datetime
 
 class AuthRouter(RouterManager):
 
-    def __init__(self, name, app, db, users):
-        RouterManager.__init__(self, name, app, db, users)
+    def __init__(self, name, app, db, users, api_adress_sources):
+        RouterManager.__init__(self, name, app, db, users, api_adress_sources)
 
     def config_routes(self):
         @self.blueprint.route('/register/', methods=['POST'])
