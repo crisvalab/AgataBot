@@ -11,9 +11,7 @@ class AuthRouter(RouterManager):
         RouterManager.__init__(self, name, app, db, users)
 
     def config_routes(self):
-        blueprint = Blueprint(self.name, __name__)
-
-        @blueprint.route('/register/', methods=['POST'])
+        @self.blueprint.route('/register/', methods=['POST'])
         def signup_user():
             data = request.get_json()
             hashed_password = generate_password_hash(data['password'], method='sha256')
@@ -24,7 +22,7 @@ class AuthRouter(RouterManager):
                 'message': 'Registered successfully.'
             }), 200
 
-        @blueprint.route('/login/', methods=['POST'])  
+        @self.blueprint.route('/login/', methods=['POST'])  
         def login_user(): 
             auth = request.authorization   
             if not auth or not auth.username or not auth.password:  
@@ -43,4 +41,4 @@ class AuthRouter(RouterManager):
                 })
             return make_response('Could not verify',  401, {'WWW.Authentication': 'Basic realm: "Login required."'})
 
-        return blueprint
+        return self.blueprint

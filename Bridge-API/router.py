@@ -9,6 +9,7 @@ class RouterManager():
         self.app = app
         self.db = db
         self.users = users
+        self.blueprint = Blueprint(self.name, __name__)
 
     def config_routes(self) -> Blueprint:
         pass

@@ -10,9 +10,8 @@ class AgataRouter(RouterManager):
         RouterManager.__init__(self, name, app, db, users)
 
     def config_routes(self):
-        blueprint = Blueprint(self.name, __name__)
 
-        @blueprint.route('/agata/conversate/en/', methods=['POST'])
+        @self.blueprint.route('/agata/conversate/en/', methods=['POST'])
         @self.token_required
         def generate_english_answer(current_user):
             if request.method == 'POST':
@@ -29,4 +28,4 @@ class AgataRouter(RouterManager):
                 'message': 'Request not valid or internal error. Pplease contact to the administrator.'
             })
 
-        return blueprint
+        return self.blueprint
