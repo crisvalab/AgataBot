@@ -32,7 +32,7 @@ def home_route():
         'message': 'Welcome to the Bridge API.',
         'info': 'This API intercommunicates all the rest of the microservices in the network to balance and distribute all the incoming requests.',
         'developer': 'Cristian Valero Abundio'
-    })
+    }), 200
 
 @app.errorhandler(404)
 def route_not_found(exc):
