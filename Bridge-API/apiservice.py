@@ -47,4 +47,4 @@ if __name__ == '__main__':
 
     app.register_blueprint(auth_router.config_routes())
     app.register_blueprint(agata_router.config_routes())
-    app.run(host='0.0.0.0', port=3005) #when finish, change port to 3000, 3005 is only for testing in production
+    app.run(host='0.0.0.0', port=3000) #when finish, change port to 3000, 3005 is only for testing in production
