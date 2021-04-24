@@ -18,7 +18,7 @@ pip install tensorflow-gpu==1.15
 pip install flask flask_restful
 ```
 
-## Autores ✒️
+## Authors ✒️
 
 These are all the people who have been participating in the development of this project.
 
