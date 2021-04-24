@@ -7,7 +7,7 @@ Thanks to all this, you can integrate this conversational model in any of your d
 ```python
 req = requests.post(url=url, json={'id': 'some id to identify conversation', 'question': 'What is your name?'})
 if req.status_code == 200:
-   sentence_to_en = req.json()['answer']
+   answer = req.json()['answer']
 ```
 
 It should be noted that I did the development of all this infrastructure during my internship at [Giant](http://giant.uji.es/).
