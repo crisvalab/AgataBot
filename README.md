@@ -4,7 +4,7 @@ It is focused on the development of a whole conversational AI model and integrat
 
 Thanks to all this, you can integrate this conversational model in any of your developments with just two lines of code. Next, we can see an example with Python of how to integrate the model within your applications.
 
-```
+```python
 req = requests.post(url=url, json={'id': 'some id to identify conversation', 'question': 'What is your name?'})
 if req.status_code == 200:
    sentence_to_en = req.json()['answer']
