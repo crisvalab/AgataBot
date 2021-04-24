@@ -2,6 +2,8 @@
 
 It is focused on the development of a whole conversational AI model and integrating it into a Cloud Service, creating a very flexible and scalable API. The entire API backend is writen in Python with [Flask](https://flask.palletsprojects.com/en/1.1.x/) and other microservices are developed with [Uvicorn](https://www.uvicorn.org/). The conversational model is achieved thanks to the integration of [GPT-2](https://github.com/openai/gpt-2) through the [GPT-2-Simple](https://github.com/minimaxir/gpt-2-simple) library.
 
+It should be noted that I did the development of all this infrastructure during my internship at [Giant](http://giant.uji.es/).
+
 ## Starting 🚀
 
 These instructions will allow you to get a copy of the project running on your local machine for development and testing purposes.
