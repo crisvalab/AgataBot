@@ -37,7 +37,7 @@ pip install flask flask_restful
 
 These are all the people who have been participating in the development of this project.
 
-* **Cristian Valero Abundio** - *Research & Development* - [titianvalero](https://github.com/CristianValero)
+* **Cristian Valero Abundio** - *Research & Development* - [titianvalero](https://www.linkedin.com/in/cristian-valero-abundio-776646207/)
 
 ## Expresions of Gratitude 🎁
 

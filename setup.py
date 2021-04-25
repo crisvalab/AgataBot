@@ -5,6 +5,8 @@ import os
 import shutil
 from os.path import join
 
+#NOT WORKING YET
+
 OUTPUT_PATH = 'GPT2-API/'
 files_to_download = {
     1: {
