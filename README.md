@@ -5,9 +5,31 @@ It is focused on the development of a whole conversational AI model and integrat
 Thanks to all this, you can integrate this conversational model in any of your developments with just two lines of code. Next, we can see an example with Python of how to integrate the model within your applications.
 
 ```python
-req = requests.post(url=url, json={'id': 'some id to identify conversation', 'question': 'What is your name?'})
-if req.status_code == 200:
-   answer = req.json()['answer']
+import requests
+
+while True:
+    text = input("Human: ")
+    r = requests.post('http://0.0.0.0:3000/agata/conversate/en/', json={"id": "1", "question": text})
+    if r.status_code == 200:
+        data = r.json()
+        print(f'Agata: {data["answer"]}')
+```
+
+This is an example of a conversation.
+```
+Human: Hey! What is your name?
+Agata: My name is Agata. Can I help you?
+Human: Yes, I want to talk about computer science.
+Agata: I have a lot of questions for you.
+Human: Me too. Did you know something about C#? 
+Agata: Yes, I have heard of it.
+Human: What is it? 
+Agata: It is a programming language that is written in C#.
+Human: Ok hahaha. Do you know to code in C#?
+Agata: Yes, it is the easiest programming language to learn.
+Human: Where can I learn it?
+Agata: The book is called "The Book of C#" and it is easy to learn.
+Human: Ok I will read it. Can you recomend me other programming language?
 ```
 
 It should be noted that I did the development of all this infrastructure during my internship at [Giant](http://giant.uji.es/).
@@ -19,9 +41,9 @@ These are some of the tools that have been needed to carry out the development o
 * [GPT-2](https://github.com/openai/gpt-2) - Main Deep Learning model
 * [TensorFlow](https://www.tensorflow.org/?hl=es-419) - Framework to work with internal models
 * [PyTorch](https://numpy.org/) - Framework to work with internal models
-* [NumPy](https://rometools.github.io/rome/) - Usado para generar RSS
-* [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Manejador de dependencias
-* [Uvicorn](https://www.uvicorn.org/) - Usado para generar RSS
+* [NumPy](https://rometools.github.io/rome/) - Used for internal maths
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/) - API Python framework.
+* [Uvicorn](https://www.uvicorn.org/) - Async API Python framework.
 
 ### Pre-requisites 📋
 
