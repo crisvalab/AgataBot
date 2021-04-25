@@ -2,16 +2,12 @@ import uvicorn
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 from starlette.routing import Route
-from bot.conversation import Conversation
-from bot.bot import AgataBot
+from src.bot import AgataBotGPT, Conversation
 
 app = Starlette(debug=False)
+response_header = { 'Access-Control-Allow-Origin': '*' }
 
-response_header = {
-    'Access-Control-Allow-Origin': '*'
-}
-
-agata = AgataBot(prepare_chat=True)
+agata = AgataBotGPT()
 conversations = {}
 
 def conversation_exists(id):
@@ -35,7 +31,7 @@ async def generate_answer(request):
         id, question = str(request_data['id']), str(request_data['question'])
         _, conv = conversation_exists(id)
         conv.append_context(question)
-        answer = agata.generate_answer(question=question, context=conv.context)
+        answer = agata.interact_model(question=conv.context)
         conv.append_context(answer)
         conversations[id] = conv
         return JSONResponse(content={
