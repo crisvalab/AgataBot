@@ -38,7 +38,7 @@ class AgataBotGPT():
             self.hparams.override_from_dict(json.load(f))
 
         if self.length is None:
-            self.length = hparams.n_ctx // 2
+            self.length = self.hparams.n_ctx // 2
         elif self.length > self.hparams.n_ctx:
             raise ValueError("Can't get samples longer than window size: %s" % self.hparams.n_ctx)
 
