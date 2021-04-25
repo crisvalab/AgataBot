@@ -44,9 +44,11 @@ class AgataBotGPT():
 
         self.sess = self.start_tf_sess()
 
-        self.context = tf.placeholder(tf.int32, [self.batch_size, None])
+        #self.context = tf.placeholder(tf.int32, [self.batch_size, None])
+        self.context = tf.compat.v1.placeholder(tf.int32, [self.batch_size, None])
         np.random.seed(self.seed)
-        tf.set_random_seed(self.seed)
+        #tf.set_random_seed(self.seed)
+        tf.compat.v1.set_random_seed(self.seed)
         self.output = sample.sample_sequence(
             hparams=self.hparams, length=self.length,
             context=self.context,
