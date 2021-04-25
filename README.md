@@ -1,6 +1,16 @@
 # AgataBot
 
-It is a project based on Cloud Computing to speak with a GPT-2 model in its 355M version trained to dialogue.
+It is focused on the development of a whole conversational AI model and integrating it into a Cloud Service, creating a very flexible and scalable API. The entire API backend is writen in Python with [Flask](https://flask.palletsprojects.com/en/1.1.x/) and other microservices are developed with [Uvicorn](https://www.uvicorn.org/). The conversational model is achieved thanks to the integration of [GPT-2](https://github.com/openai/gpt-2) through the [GPT-2-Simple](https://github.com/minimaxir/gpt-2-simple) library.
+
+Thanks to all this, you can integrate this conversational model in any of your developments with just two lines of code. Next, we can see an example with Python of how to integrate the model within your applications.
+
+```python
+req = requests.post(url=url, json={'id': 'some id to identify conversation', 'question': 'What is your name?'})
+if req.status_code == 200:
+   answer = req.json()['answer']
+```
+
+It should be noted that I did the development of all this infrastructure during my internship at [Giant](http://giant.uji.es/).
 
 ## Starting 🚀
 
@@ -17,6 +27,12 @@ pip install gpt-2-simple
 pip install tensorflow-gpu==1.15
 pip install flask flask_restful
 ```
+
+## Authors ✒️
+
+These are all the people who have been participating in the development of this project.
+
+* **Cristian Valero Abundio** - *Research & Development* - [titianvalero](https://github.com/CristianValero)
 
 <!--### Instalación 🔧
 
@@ -79,15 +95,6 @@ Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](ht
 ## Versionado 📌
 
 Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
 
 ## Licencia 📄
 
