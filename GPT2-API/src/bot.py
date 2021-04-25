@@ -81,6 +81,8 @@ class AgataBotGPT():
     def interact_model(self, question):
         if self.interactions == 10:
             self.reset_session()
+            self.interactions = 0
+            gc.collect()
             
         question = question.rstrip().strip()
         context_tokens = self.enc.encode(question)
