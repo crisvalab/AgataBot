@@ -1,4 +1,4 @@
-<body> 
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>AgataBot - Welcome</title>
@@ -217,10 +217,8 @@
             <div class="col-xl-4 text-center" data-aos="fade-right" data-aos-delay="100">
               <img src="assets/img/features-3.png" class="img-fluid p-4" alt="">
             </div>
-
             <div class="col-xl-8 d-flex content">
               <div class="row align-self-center gy-4">
-
                 <div class="col-md-6 icon-box" data-aos="fade-up">
                   <i class="ri-line-chart-line"></i>
                   <div>
@@ -228,7 +226,6 @@
                     <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
                   </div>
                 </div>
-
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
                   <i class="ri-stack-line"></i>
                   <div>
@@ -236,7 +233,6 @@
                     <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
                   </div>
                 </div>
-
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
                   <i class="ri-brush-4-line"></i>
                   <div>
@@ -244,7 +240,6 @@
                     <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
                   </div>
                 </div>
-
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
                   <i class="ri-magic-line"></i>
                   <div>
@@ -252,7 +247,6 @@
                     <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
                   </div>
                 </div>
-
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="ri-command-line"></i>
                   <div>
@@ -260,7 +254,6 @@
                     <p>Et fuga et deserunt et enim. Dolorem architecto ratione tensa raptor marte</p>
                   </div>
                 </div>
-
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
                   <i class="ri-radar-line"></i>
                   <div>
@@ -268,30 +261,20 @@
                     <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
                   </div>
                 </div>
-
               </div>
             </div>
-
           </div>
-
         </div><!-- End Feature Icons -->
-
       </div>
-
     </section><!-- End Features Section -->
-
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing">
-
       <div class="container" data-aos="fade-up">
-
         <header class="section-header">
           <h2>Pricing</h2>
           <p>Check our Pricing</p>
         </header>
-
         <div class="row gy-4" data-aos="fade-left">
-
           <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="box">
               <h3 style="color: #07d5c0;">Free Plan</h3>
@@ -307,7 +290,6 @@
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
           </div>
-
           <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
             <div class="box">
               <span class="featured">Featured</span>
@@ -324,7 +306,6 @@
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
           </div>
-
           <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
             <div class="box">
               <h3 style="color: #ff901c;">Business Plan</h3>
@@ -340,7 +321,6 @@
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
           </div>
-
           <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
             <div class="box">
               <h3 style="color: #ff0071;">Ultimate Plan</h3>
@@ -356,27 +336,18 @@
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
           </div>
-
         </div>
-
       </div>
-
     </section><!-- End Pricing Section -->
-
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
-
       <div class="container" data-aos="fade-up">
-
         <header class="section-header">
           <h2>Contact</h2>
           <p>Contact Us</p>
         </header>
-
         <div class="row gy-4">
-
           <div class="col-lg-6">
-
             <div class="row gy-4">
               <div class="col-md-6">
                 <div class="info-box">
@@ -407,48 +378,34 @@
                 </div>
               </div>
             </div>
-
           </div>
-
           <div class="col-lg-6">
             <form action="forms/contact.php" method="post" class="php-email-form">
               <div class="row gy-4">
-
                 <div class="col-md-6">
                   <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
-
                 <div class="col-md-6 ">
                   <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                 </div>
-
                 <div class="col-md-12">
                   <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                 </div>
-
                 <div class="col-md-12">
                   <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
                 </div>
-
                 <div class="col-md-12 text-center">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
-
                   <button type="submit">Send Message</button>
                 </div>
-
               </div>
             </form>
-
           </div>
-
         </div>
-
       </div>
-
     </section><!-- End Contact Section -->
-
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -548,7 +505,3 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
