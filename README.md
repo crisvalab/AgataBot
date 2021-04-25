@@ -48,11 +48,15 @@ These are some of the tools that have been needed to carry out the development o
 ### Pre-requisites 📋
 
 If you don't use Docker, you will need to create a different environment for each microservice that makes up the infrastructure. In addition, in each different environment you must install the different libraries so that everything works correctly. For this you can always install everything through the file requiments.txt.
+There are some common libraries that AgataBot Cloud uses.
 
 ```
-pip install gpt-2-simple
-pip install tensorflow-gpu==1.15
-pip install flask flask_restful
+tensorflow-gpu==1.15
+pytorch
+numpy
+flask 
+flask_restful
+uvicorn
 ```
 
 ## Authors ✒️
