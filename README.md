@@ -68,8 +68,8 @@ These are all the people who have been participating in the development of this 
 ## Expresions of Gratitude 🎁
 
 * Tell others about this project 📢
-* Invite Cristian a beer 🍺 or a coffe ☕.
-* Share it 🤓.
+* Invite Cristian a beer 🍺 or a coffe ☕
+* Share it 🤓
 
 <!--### Instalación 🔧
 
