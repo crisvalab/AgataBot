@@ -8,9 +8,7 @@ app = Starlette(debug=False)
 
 translator = Translator()
 
-response_header = {
-    'Access-Control-Allow-Origin': '*'
-}
+response_header = { 'Access-Control-Allow-Origin': '*' }
 
 @app.route('/', methods=['GET', 'POST', 'HEAD'])
 async def home_route(request):
