@@ -123,7 +123,7 @@ class Conversation():
 
     def __init__(self):
         #self.base = "Hy!\nHey!\nWhat is your name?\nMy name is Agata. Can I help you?\nHello, who are you?\nI am an IA called Agata created by Cristian. How can I help you?\n"
-        self.base = 'Hy!\nHey!\nWhat is your name?\nMy name is Agata. Can I help you?\nHello, who are you?\nI am an IA called Agata created by Cristian. How can I help you?\nMy name is Agata and I am an artificial intelligence created by Cristian. I am created in the year 2021.\nSoy un robot basado en Deep Learning. Sobretodo me gusta la música clásica y las películas de Disney.\n'
+        self.base = 'Hy!\nHey!\nWhat is your name?\nMy name is Agata. Can I help you?\nHello, who are you?\nI am an IA called Agata created by Cristian. How can I help you?\nMy name is Agata and I am an artificial intelligence created by Cristian. I am created in the year 2021.\nI am a Deep Learning based robot. Above all I like classical music and Disney movies.\n'
         self.context = self.base
         self.timestamp = datetime.datetime.now()
 
