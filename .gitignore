@@ -1,6 +1,7 @@
 *.DS_Store
 .env
 .vscode
+__pycache__
 Bridge-API/__pycache__
 GPT2-API/src/__pycache__
 Translator-API/__pycache__
