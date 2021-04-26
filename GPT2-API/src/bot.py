@@ -3,6 +3,7 @@ import uvicorn
 import os
 import gc
 import numpy as np
+import datetime
 import tensorflow as tf
 from tensorflow.core.protobuf import rewriter_config_pb2
 from starlette.applications import Starlette
@@ -124,6 +125,7 @@ class Conversation():
         #self.base = "Hy!\nHey!\nWhat is your name?\nMy name is Agata. Can I help you?\nHello, who are you?\nI am an IA called Agata created by Cristian. How can I help you?\n"
         self.base = 'Hy!\nHey!\nWhat is your name?\nMy name is Agata. Can I help you?\nHello, who are you?\nI am an IA called Agata created by Cristian. How can I help you?\nMy name is Agata and I am an artificial intelligence created by Cristian. I am created in the year 2021.\nSoy un robot basado en Deep Learning. Sobretodo me gusta la música clásica y las películas de Disney.\n'
         self.context = self.base
+        self.timestamp = datetime.datetime.now()
 
     def reset_context():
         latest = self.context.split("\n")[-5:]
@@ -134,6 +136,15 @@ class Conversation():
     def append_context(self, plus):
         self.context += f'{plus}\n'
         if len(self.context) >= 10000:
+            self.reset_context()
+
+        timestamp_now = datetime.datetime.now()
+        if timestamp_now > self.timestamp:
+            td = timestamp_now - self.timestamp
+        else:
+            td = self.timestamp - timestamp_now
+        td_mins = int(round(td.total_seconds() / 60))
+        if td_mins > 10:
             self.reset_context()
 
     def __str__(self):
