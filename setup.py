@@ -49,4 +49,4 @@ if __name__ == '__main__':
         downloader.unzip()
         print(f'{file_name} extracted correctly.')
 
-    shutil.rmtree('.temp/')
+    shutil.rmtree('.temp/') #remove .temp/ folder to save space... If you want to conserve all raw zips delete this line or comment it.
