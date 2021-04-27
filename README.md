@@ -34,7 +34,7 @@ Human: Ok I will read it. Can you recomend me other programming language?
 
 ### Setup 🔧
 
-Here is an example of how to start working with Agata Cloud. First you will have to clone the repository and second you will have to run the setup.py file to start downloading the trained models and the heaviest files.
+Here is an example of how to start working with ** Agata Cloud **. First you will have to clone the repository and second you will have to run the setup.py file to start downloading the trained models and the heaviest files.
 
 ```shell
 git clone https://github.com/CristianValero/AgataBot.git
