@@ -1,6 +1,6 @@
 # AgataBot
 
-It is focused on the development of a whole spanish conversational AI model and integrating it into a Cloud Service, creating a very flexible and scalable API. The entire API backend is writen in Python with [Flask](https://flask.palletsprojects.com/en/1.1.x/) and other microservices are developed with [Uvicorn](https://www.uvicorn.org/). The conversational model is achieved thanks to the integration of [GPT-2](https://github.com/openai/gpt-2).
+It is focused on the development of a whole spanish conversational AI model and integrating it into a Cloud Service, creating a very flexible and scalable API. The entire API backend is writen in Python with [Flask](https://flask.palletsprojects.com/en/1.1.x/) and other microservices are developed with [Uvicorn](https://www.uvicorn.org/). The conversational model is achieved thanks to the integration of [GPT-2](https://github.com/openai/gpt-2). It should be noted that I did the development of all this infrastructure during my internship at [Giant](http://giant.uji.es/).
 
 Thanks to all this, you can integrate this conversational model in any of your developments with just two lines of code. Next, we can see an example with Python of how to integrate the model within your applications.
 
@@ -31,8 +31,6 @@ Human: Where can I learn it?
 Agata: The book is called "The Book of C#" and it is easy to learn.
 Human: Ok I will read it. Can you recomend me other programming language?
 ```
-
-It should be noted that I did the development of all this infrastructure during my internship at [Giant](http://giant.uji.es/).
 
 ### Setup 🔧
 
