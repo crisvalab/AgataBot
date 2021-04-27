@@ -38,10 +38,12 @@ It should be noted that I did the development of all this infrastructure during 
 
 Here is an example of how to start working with Agata Cloud. First you will have to clone the repository and second you will have to run the setup.py file to start downloading the trained models and the heaviest files.
 
-```bash
-https://github.com/CristianValero/AgataBot.git
+```shell
+git clone https://github.com/CristianValero/AgataBot.git
 python3 setup.py
 ```
+
+Once all this process has finished ... You can now start to deploy the entire infrastructure and it would be totally ready to start working.
 
 ## Build with 🛠️
 
