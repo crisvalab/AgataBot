@@ -37,8 +37,13 @@ Human: Ok I will read it. Can you recomend me other programming language?
 Here is an example of how to start working with **Agata Cloud**. First you will have to clone the repository and second you will have to run the setup.py file to start downloading the trained models and the heaviest files.
 
 ```shell
-git clone https://github.com/CristianValero/AgataBot.git
-python3 setup.py
+>>> git clone https://github.com/CristianValero/AgataBot.git
+>>> python3 setup.py
+
+>>> cd Bridge-API/
+>>> python3
+>>> from apiservice import db
+>>> db.create_all()
 ```
 
 Once all this process has finished ... You can now start to deploy the entire infrastructure and it would be totally ready to start working.
