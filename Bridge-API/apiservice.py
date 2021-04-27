@@ -49,4 +49,4 @@ def route_not_found(exc):
 if __name__ == '__main__':
     for router in routers:
          app.register_blueprint(router.config_routes())
-    app.run(host='0.0.0.0', port=3000) #when finish, change port to 3000, 3005 is only for testing in production
+    app.run(host='0.0.0.0', port=3000)
