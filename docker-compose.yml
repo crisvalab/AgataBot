@@ -1,0 +1,6 @@
+services:
+    gptapi:
+        build: ./GPT2-API/
+        ports:
+            - 3001:3001
+        restart: "on-failure"
