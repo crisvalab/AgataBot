@@ -1,0 +1,5 @@
+transformers
+sentencepiece
+torch
+torchvision
+torchaudio
