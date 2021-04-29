@@ -1,6 +1,18 @@
+version: '3.4'
+
 services:
     gptapi:
         build: ./GPT2-API/
         ports:
             - 3001:3001
+        restart: "on-failure"
+    translatorapi:
+        build: ./Translator-API/
+        ports:
+            - 3002:3002
+        restart: "on-failure"
+    bridgeapi:
+        build: ./Bridge-API/
+        ports:
+            - 3000:3000
         restart: "on-failure"
