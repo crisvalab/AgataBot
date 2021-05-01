@@ -127,7 +127,7 @@ class Conversation():
         self.context = self.base
         self.timestamp = datetime.datetime.now()
 
-    def reset_context():
+    def reset_context(self):
         latest = self.context.split("\n")[-5:]
         self.context = self.base
         for l in latest:
