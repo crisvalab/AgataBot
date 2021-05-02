@@ -44,6 +44,8 @@ Here is an example of how to start working with **Agata Cloud**. First you will 
 >>> python3
 >>> from apiservice import db
 >>> db.create_all()
+
+>>> docker-compose up
 ```
 
 Once all this process has finished ... You can now start to deploy the entire infrastructure and it would be totally ready to start working.
