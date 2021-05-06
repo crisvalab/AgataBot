@@ -2,7 +2,8 @@
     "BRIDGE-API": {
         "INTERNAL-RUN-ADRESS": "0.0.0.0",
         "LISTEN-ADRESS": "0.0.0.0",
-        "PORT": 3000
+        "PORT": 3000,
+        "JWT-SECRET": "YOUR-SUPER-SECRET-TOKEN"
     },
     "TRANSLATOR-API": {
         "INTERNAL-RUN-ADRESS": "0.0.0.0",
