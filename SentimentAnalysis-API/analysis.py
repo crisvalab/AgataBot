@@ -9,7 +9,3 @@ class SentimentAnalysis():
 
     def analize(self, sentence):
         return self.nlp(sentence)[0]
-
-if __name__ == '__main__':
-    an = SentimentAnalysis()
-    print(an.analize("I don't like pizza."))
