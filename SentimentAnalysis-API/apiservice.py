@@ -7,32 +7,10 @@ from starlette.routing import Route
 @app.route('/', methods=['GET', 'POST', 'HEAD'])
 async def home_route(request):
     return JSONResponse(content={
-        'message': 'Welcome to Translator EN-ES/ES-EN API.',
+        'message': 'Welcome to SentimentAnalysis-API.',
         'info': 'This API only will run from 0.0.0.0 and is for local use only.',
         'developer': 'Cristian Valero Abundio'
     }, headers=response_header)
-
-@app.route('/translator/es/', methods=['POST'])
-async def translate_to_es(request):
-    if request.method == 'POST':
-        request_data = await request.json() #{'sentence': 'Hy! My name is Cristian.'}
-        sentence = str(request_data['sentence'])
-        translation = translator.translate_to_spanish(sentence)
-        return JSONResponse(content={
-            'sentence': sentence,
-            'translation': str(translation)
-        }, headers=response_header)
-
-@app.route('/translator/en/', methods=['POST'])
-async def translate_to_en(request):
-    if request.method == 'POST':
-        request_data = await request.json() #{'sentence': 'Hola, me llamo Paco.'}
-        sentence = str(request_data['sentence'])
-        translation = translator.translate_to_english(sentence)
-        return JSONResponse(content={
-            'sentence': sentence,
-            'translation': translation
-        }, headers=response_header)
 
 @app.exception_handler(404)
 def route_not_found(request, exc):
