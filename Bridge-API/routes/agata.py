@@ -19,8 +19,6 @@ class AgataRouter(RouterManager):
         }
 
     def config_routes(self):
-        agata_service_config = self.config['SERVICES']['GPT2-API']
-
         @self.blueprint.route('/agata/conversate/en/', methods=['POST'])
         @self.token_required
         def generate_english_answer(current_user):
