@@ -1,4 +1,4 @@
-from router import RouterManager
+from .router import RouterManager
 from flask import Blueprint, request, jsonify, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
@@ -7,8 +7,8 @@ import datetime
 
 class AuthRouter(RouterManager):
 
-    def __init__(self, name, app, db, users, api_adress_sources):
-        RouterManager.__init__(self, name, app, db, users, api_adress_sources)
+    def __init__(self, name, app, db, users, config):
+        RouterManager.__init__(self, name, app, db, users, config)
 
     def config_routes(self):
         @self.blueprint.route('/register/', methods=['POST'])

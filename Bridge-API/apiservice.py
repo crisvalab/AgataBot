@@ -1,21 +1,16 @@
+import json
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from routes.agata import AgataRouter
 from routes.auth import AuthRouter
 
-API_ADRESS_SOURCES = {
-    'translator': {
-        'es': 'http://0.0.0.0:3002/translator/es/',
-        'en': 'http://0.0.0.0:3002/translator/en/'
-    },
-    'agata': {
-        'answer': 'http://0.0.0.0:3001/agata/answer/'
-    }
-}
+config = {}
+with open('config.json') as config_file:
+    config = json.loads(config_file.read())
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
-app.config['SECRET_KEY'] = 'Th1s1ss3cr3t'
+app.config['SECRET_KEY'] = config['JWT-SECRET']
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///home/cristian/Desktop/AgataBot-v2/AgataBot/Bridge-API/authapi.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
@@ -27,8 +22,8 @@ class Users(db.Model):
     password = db.Column(db.String(50))
 
 routers = [
-    AuthRouter('AuthRouter', app, db, Users, API_ADRESS_SOURCES),
-    AgataRouter('AgataRouter', app, db, Users, API_ADRESS_SOURCES)
+    AuthRouter('AuthRouter', app, db, Users, config),
+    AgataRouter('AgataRouter', app, db, Users, config)
 ]
 
 @app.route('/', methods=['GET', 'POST'])

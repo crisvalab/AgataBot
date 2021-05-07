@@ -4,12 +4,12 @@ import jwt
 
 class RouterManager():
 
-    def __init__(self, name, app, db, users, api_adress_sources):
+    def __init__(self, name, app, db, users, config):
         self.name = name
         self.app = app
         self.db = db
         self.users = users
-        self.api_adress_sources = api_adress_sources
+        self.config = config
         self.blueprint = Blueprint(self.name, __name__)
 
     def config_routes(self) -> Blueprint:

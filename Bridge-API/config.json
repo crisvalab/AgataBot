@@ -1,0 +1,21 @@
+{
+    "JWT-SECRET": "YOUR-SUPER-SECRET-TOKEN",
+    "SERVICES": {
+        "BRIDGE-API": {
+            "LISTEN-ADRESS": "0.0.0.0",
+            "PORT": 3000
+        },
+        "TRANSLATOR-API": {
+            "LISTEN-ADRESS": "0.0.0.0",
+            "PORT": 3002
+        },
+        "GPT2-API": {
+            "LISTEN-ADRESS": "0.0.0.0",
+            "PORT": 3001
+        },
+        "SENTIMENT-ANALYSIS": {
+            "LISTEN-ADRESS": "0.0.0.0",
+            "PORT": 3003
+        }
+    }
+}
