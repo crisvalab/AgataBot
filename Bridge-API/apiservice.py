@@ -1,6 +1,8 @@
 import json
+
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+
 from routes.agata import AgataRouter
 from routes.auth import AuthRouter
 
@@ -8,10 +10,13 @@ config = {}
 with open('config.json') as config_file:
     config = json.loads(config_file.read())
 
+db_config = config['MySQL']
+MYSQL_URI = f'mysql+pymysql://{db_config["USER"]}:{db_config["PASSWORD"]}@{db_config["HOST"]}:{db_config["PORT"]}/{db_config["DATABASE"]}'
+
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 app.config['SECRET_KEY'] = config['JWT-SECRET']
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///home/cristian/Desktop/AgataBot-v2/AgataBot/Bridge-API/authapi.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 

@@ -16,3 +16,4 @@ urllib3==1.26.4
 uuid==1.30
 Werkzeug==1.0.1
 zope.interface==5.4.0
+pymysql

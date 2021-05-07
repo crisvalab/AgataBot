@@ -5,14 +5,34 @@ services:
         build: ./GPT2-API/
         ports:
             - 3001:3001
+        expose:
+            - '3001'
         restart: "on-failure"
     translatorapi:
         build: ./Translator-API/
         ports:
             - 3002:3002
+        expose:
+            - '3002'
         restart: "on-failure"
     bridgeapi:
         build: ./Bridge-API/
         ports:
             - 3000:3000
+        expose:
+            - '3000'
         restart: "on-failure"
+    db:
+        image: mysql:5.7
+        restart: "on-failure"
+        environment:
+            MYSQL_DATABASE: 'agatacloud'
+            MYSQL_USER: 'cristian'
+            MYSQL_PASSWORD: '1234'
+            MYSQL_ROOT_PASSWORD: '1234'
+        ports:
+            - '3306:3306'
+        expose:
+            - '3306'
+        volumes:
+            - my-db:/var/lib/mysql

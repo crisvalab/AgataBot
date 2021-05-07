@@ -1,5 +1,12 @@
 {
     "JWT-SECRET": "YOUR-SUPER-SECRET-TOKEN",
+    "MySQL": {
+        "HOST": "localhost",
+        "PORT": 3306,
+        "DATABASE": "agatacloud",
+        "USER": "cristian",
+        "PASSWORD": "1234"
+    },
     "SERVICES": {
         "BRIDGE-API": {
             "LISTEN-ADRESS": "0.0.0.0",
