@@ -26,6 +26,9 @@ class Users(db.Model):
     email = db.Column(db.String(150))
     password = db.Column(db.String(50))
 
+    def __repr__(self):
+        return '<User %r>' % self.email
+
 routers = [
     AuthRouter('AuthRouter', app, db, Users, config),
     AgataRouter('AgataRouter', app, db, Users, config)
