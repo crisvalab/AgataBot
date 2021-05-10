@@ -3,3 +3,5 @@ sentencepiece
 torch
 torchvision
 torchaudio
+uvicorn
+starlette

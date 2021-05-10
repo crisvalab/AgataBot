@@ -1,7 +1,7 @@
 {
-    "JWT-SECRET": "YOUR-SUPER-SECRET-TOKEN",
+    "JWT-SECRET": "7110c8ae51a4b5af97be6534caef90e4bb9bdcb3380af008f90b23a5d1616bf319bc298105da20fe",
     "MySQL": {
-        "HOST": "localhost",
+        "HOST": "db",
         "PORT": 3306,
         "DATABASE": "agatacloud",
         "USER": "cristian",

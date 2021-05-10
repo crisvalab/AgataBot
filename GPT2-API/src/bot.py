@@ -138,14 +138,14 @@ class Conversation():
         if len(self.context) >= 10000:
             self.reset_context()
 
-        timestamp_now = datetime.datetime.now()
-        if timestamp_now > self.timestamp:
-            td = timestamp_now - self.timestamp
-        else:
-            td = self.timestamp - timestamp_now
-        td_mins = int(round(td.total_seconds() / 60))
-        if td_mins > 10:
-            self.reset_context()
+        # timestamp_now = datetime.datetime.now()
+        # if timestamp_now > self.timestamp:
+        #     td = timestamp_now - self.timestamp
+        # else:
+        #     td = self.timestamp - timestamp_now
+        # td_mins = int(round(td.total_seconds() / 60))
+        # if td_mins > 10:
+        #     self.reset_context()
 
     def __str__(self):
         return self.context
