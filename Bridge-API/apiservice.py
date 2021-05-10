@@ -25,7 +25,7 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     public_id = db.Column(db.Integer)
     email = db.Column(db.String(150))
-    password = db.Column(db.String(50))
+    password = db.Column(db.String(150))
 
 routers = [
     AuthRouter('AuthRouter', app, db, Users, config),
