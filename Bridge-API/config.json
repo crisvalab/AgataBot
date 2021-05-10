@@ -1,16 +1,12 @@
 {
     "SECRET": "Th1s1ss3cr3t",
     "SERVICES": {
-        "BRIDGE-API": {
-            "LISTEN-ADRESS": "0.0.0.0",
-            "PORT": 3000
-        },
         "TRANSLATOR-API": {
-            "LISTEN-ADRESS": "0.0.0.0",
+            "LISTEN-ADRESS": "translatorapi",
             "PORT": 3002
         },
         "GPT2-API": {
-            "LISTEN-ADRESS": "0.0.0.0",
+            "LISTEN-ADRESS": "gptapi",
             "PORT": 3001
         },
         "SENTIMENT-ANALYSIS": {
