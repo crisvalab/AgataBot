@@ -48,7 +48,7 @@ def route_not_found(exc):
     }), 404
 
 if __name__ == '__main__':
-    db.create_all()
+    #db.create_all()
     for router in routers:
          app.register_blueprint(router.config_routes())
     app.run(host='0.0.0.0', port=3000)
