@@ -4,11 +4,11 @@ import jwt
 
 class RouterManager():
 
-    def __init__(self, name, app, db, users, config):
+    def __init__(self, name, app, db, Users, config):
         self.name = name
         self.app = app
         self.db = db
-        self.users = users
+        self.Users = Users
         self.config = config
         self.blueprint = Blueprint(self.name, __name__)
 
@@ -21,15 +21,18 @@ class RouterManager():
     def token_required(self, f):
         @wraps(f)
         def decorator(*args, **kwargs):
-            if request.remote_addr != '127.0.0.1':
+            if request.remote_addr != 'REPLACE WITH 127.0.0.1':
                 if 'x-access-tokens' in request.headers:
                     token = request.headers['x-access-tokens']
-                    try:
-                        data = jwt.decode(token, self.app.config['SECRET_KEY'], algorithms=["HS256"])
-                        current_user = self.users.query.filter_by(public_id=data['public_id']).first()
-                        return f(current_user, *args, **kwargs)
-                    except:
-                        return jsonify({ 'message': 'Invalid token.' })
+                    data = jwt.decode(token, self.app.config['SECRET_KEY'], algorithms=["HS256"])
+                    current_user = self.Users.query.filter_by(public_id=data['public_id']).first()
+                    return f(current_user, *args, **kwargs)
+                    # try:
+                    #     data = jwt.decode(token, self.app.config['SECRET_KEY'], algorithms=["HS256"])
+                    #     current_user = self.Users.query.filter_by(public_id=data['public_id']).first()
+                    #     return f(current_user, *args, **kwargs)
+                    # except:
+                    #     return jsonify({ 'message': 'Invalid token.' })
                 else:
                     return jsonify({ 'message': 'A valid token is missing.' })
             else:

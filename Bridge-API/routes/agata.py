@@ -4,8 +4,8 @@ import requests
 
 class AgataRouter(RouterManager):
 
-    def __init__(self, name, app, db, users, config):
-        RouterManager.__init__(self, name, app, db, users, config)
+    def __init__(self, name, app, db, Users, config):
+        super().__init__(name, app, db, Users, config)
 
         services = self.config['SERVICES']
         self.addresses = {
