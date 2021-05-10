@@ -1,10 +1,11 @@
-FROM python:3.8-slim
+FROM python:3.8-slim-buster
 
 WORKDIR /app
 
 COPY . /app
 
-RUN sudo apt-get install -y sqlite3 libsqlite3-dev
+RUN apt update && apt upgrade -y
+RUN apt-get install sqlite3 libsqlite3-dev -y
 RUN mkdir /db
 RUN /usr/bin/sqlite3 /db/agatacloud.db
 
