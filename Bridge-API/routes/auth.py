@@ -37,9 +37,7 @@ class AuthRouter(RouterManager):
                         }, self.app.config['SECRET_KEY']) 
                     return jsonify({'token' : token})
             else:
-                return jsonify({
-                    "message": "Requested user not found."
-                })
+                return jsonify({ "message": "Requested user not found." })
             return make_response('Could not verify',  401, {'WWW.Authentication': 'Basic realm: "Login required."'})
 
         return self.blueprint

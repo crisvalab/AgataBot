@@ -17,6 +17,7 @@ app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 app.config['SECRET_KEY'] = config['JWT-SECRET']
 app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_URI
+app.config['SQLALCHEMY_POOL_TIMEOUT'] = 3600
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
@@ -47,6 +48,7 @@ def route_not_found(exc):
     }), 404
 
 if __name__ == '__main__':
+    db.create_all()
     for router in routers:
          app.register_blueprint(router.config_routes())
     app.run(host='0.0.0.0', port=3000)
