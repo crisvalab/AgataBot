@@ -4,6 +4,8 @@ from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 from starlette.routing import Route
 
+response_header = { 'Access-Control-Allow-Origin': '*' }
+
 @app.route('/', methods=['GET', 'POST', 'HEAD'])
 async def home_route(request):
     return JSONResponse(content={
