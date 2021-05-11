@@ -27,18 +27,21 @@ async def home_route(request):
 @app.route('/agata/answer/', methods=['POST'])
 async def generate_answer(request):
     if request.method == 'POST':
-        request_data = await request.json() #{'id': 3, 'question': ''}
-        id, question = str(request_data['id']), str(request_data['question'])
-        _, conv = conversation_exists(id)
-        conv.append_context(question)
-        answer = agata.interact_model(question=conv.context)
-        conv.append_context(answer)
-        conversations[id] = conv
-        return JSONResponse(content={
-            'id': str(id),
-            'question': str(question),
-            'answer': str(answer)
-        }, headers=response_header)
+        try:
+            request_data = await request.json() #{'id': 3, 'question': ''}
+            id, question = str(request_data['id']), str(request_data['question'])
+            _, conv = conversation_exists(id)
+            conv.append_context(question)
+            answer = agata.interact_model(question=conv.context)
+            conv.append_context(answer)
+            conversations[id] = conv
+            return JSONResponse(content={
+                'id': str(id),
+                'question': str(question),
+                'answer': str(answer)
+            }, headers=response_header)
+        except:
+            return JSONResponse(content={'error:': 'Request not valid.'}, headers=response_header)
 
 @app.exception_handler(404)
 def route_not_found(request, exc):

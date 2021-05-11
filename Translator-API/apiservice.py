@@ -21,24 +21,30 @@ async def home_route(request):
 @app.route('/translator/es/', methods=['POST'])
 async def translate_to_es(request):
     if request.method == 'POST':
-        request_data = await request.json() #{'sentence': 'Hy! My name is Cristian.'}
-        sentence = str(request_data['sentence'])
-        translation = translator.translate_to_spanish(sentence)
-        return JSONResponse(content={
-            'sentence': sentence,
-            'translation': str(translation)
-        }, headers=response_header)
+        try:
+            request_data = await request.json() #{'sentence': 'Hy! My name is Cristian.'}
+            sentence = str(request_data['sentence'])
+            translation = translator.translate_to_spanish(sentence)
+            return JSONResponse(content={
+                'sentence': sentence,
+                'translation': str(translation)
+            }, headers=response_header)
+        except:
+            return JSONResponse(content={'error:': 'Request not valid.'}, headers=response_header)
 
 @app.route('/translator/en/', methods=['POST'])
 async def translate_to_en(request):
     if request.method == 'POST':
-        request_data = await request.json() #{'sentence': 'Hola, me llamo Paco.'}
-        sentence = str(request_data['sentence'])
-        translation = translator.translate_to_english(sentence)
-        return JSONResponse(content={
-            'sentence': sentence,
-            'translation': translation
-        }, headers=response_header)
+        try:
+            request_data = await request.json() #{'sentence': 'Hola, me llamo Paco.'}
+            sentence = str(request_data['sentence'])
+            translation = translator.translate_to_english(sentence)
+            return JSONResponse(content={
+                'sentence': sentence,
+                'translation': translation
+            }, headers=response_header)
+        except:
+            return JSONResponse(content={'error:': 'Request not valid.'}, headers=response_header)
 
 @app.exception_handler(404)
 def route_not_found(request, exc):
