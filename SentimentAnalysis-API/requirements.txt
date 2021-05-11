@@ -1,28 +1,31 @@
 brotlipy==0.7.0
 certifi==2020.12.5
-cffi
-chardet
+cffi @ file:///home/conda/feedstock_root/build_artifacts/cffi_1613413863336/work
+chardet @ file:///home/conda/feedstock_root/build_artifacts/chardet_1610093492116/work
 click==7.1.2
-cryptography
-filelock
-idna
-joblib
-numpy
-packaging
-pycparser
-pyOpenSSL
+cryptography @ file:///home/conda/feedstock_root/build_artifacts/cryptography_1616851485986/work
+filelock @ file:///home/conda/feedstock_root/build_artifacts/filelock_1589994591731/work
+h11==0.12.0
+idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1593328102638/work
+joblib @ file:///home/conda/feedstock_root/build_artifacts/joblib_1612898609989/work
+numpy @ file:///home/conda/feedstock_root/build_artifacts/numpy_1616933154495/work
+packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1612459636436/work
+Pillow==8.2.0
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1593275161868/work
+pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1608055815057/work
 pyparsing==2.4.7
-PySocks
-regex
-requests
-sacremoses
-six
-tokenizers
-tqdm
-transformers
-urllib3
-uvicorn
-starlette
-torch
-torchvision
-torchaudio
+PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1610291451001/work
+regex @ file:///home/conda/feedstock_root/build_artifacts/regex_1617644417063/work
+requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1608156231189/work
+sacremoses @ file:///home/conda/feedstock_root/build_artifacts/sacremoses_1588857588528/work
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+starlette==0.14.2
+tokenizers @ file:///home/conda/feedstock_root/build_artifacts/tokenizers_1615295873629/work
+torch==1.8.1
+torchaudio==0.8.1
+torchvision==0.9.1
+tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1617680194207/work
+transformers @ file:///home/conda/feedstock_root/build_artifacts/transformers_1619802476206/work
+typing-extensions==3.10.0.0
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1615828766818/work
+uvicorn==0.13.4
