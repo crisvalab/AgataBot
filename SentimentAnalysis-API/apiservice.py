@@ -4,7 +4,10 @@ from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 from starlette.routing import Route
 
+app = Starlette(debug=False)
 response_header = { 'Access-Control-Allow-Origin': '*' }
+
+an = SentimentAnalysis()
 
 @app.route('/', methods=['GET', 'POST', 'HEAD'])
 async def home_route(request):
@@ -22,6 +25,5 @@ def route_not_found(request, exc):
     }, status_code=exc.status_code)
 
 if __name__ == '__main__':
-    an = SentimentAnalysis()
     uvicorn.run(app, host='0.0.0.0', port=3003)
     #print(an.analize("I don't like pizza."))
