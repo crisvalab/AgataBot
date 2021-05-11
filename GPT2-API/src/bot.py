@@ -135,7 +135,7 @@ class Conversation():
 
     def append_context(self, plus):
         self.context += f'{plus}\n'
-        if len(self.context) >= 10000:
+        if len(self.context.split(" ")) >= 10000:
             self.reset_context()
 
         # timestamp_now = datetime.datetime.now()
