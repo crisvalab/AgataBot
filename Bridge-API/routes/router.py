@@ -21,18 +21,15 @@ class RouterManager():
     def token_required(self, f):
         @wraps(f)
         def decorator(*args, **kwargs):
-            if request.remote_addr != 'REPLACE WITH 127.0.0.1':
+            if request.remote_addr != 'REPLACE WITH 127.0.0.1' and not '127' in request.remote_addr:
                 if 'x-access-tokens' in request.headers:
                     token = request.headers['x-access-tokens']
-                    data = jwt.decode(token, self.app.config['SECRET_KEY'], algorithms=["HS256"])
-                    current_user = self.Users.query.filter_by(public_id=data['public_id']).first()
-                    return f(current_user, *args, **kwargs)
-                    # try:
-                    #     data = jwt.decode(token, self.app.config['SECRET_KEY'], algorithms=["HS256"])
-                    #     current_user = self.Users.query.filter_by(public_id=data['public_id']).first()
-                    #     return f(current_user, *args, **kwargs)
-                    # except:
-                    #     return jsonify({ 'message': 'Invalid token.' })
+                    try:
+                        data = jwt.decode(token, self.app.config['SECRET_KEY'], algorithms=["HS256"])
+                        current_user = self.Users.query.filter_by(public_id=data['public_id']).first()
+                        return f(current_user, *args, **kwargs)
+                    except:
+                        return jsonify({ 'message': 'Invalid token.' })
                 else:
                     return jsonify({ 'message': 'A valid token is missing.' })
             else:
