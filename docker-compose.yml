@@ -25,3 +25,10 @@ services:
         expose:
             - '3002'
         restart: "on-failure"
+    sentimentanalysisapi:
+        build: ./SentimentAnalysis-API/
+        ports:
+            - 3003:3003
+        expose:
+            - '3003'
+        restart: "on-failure"

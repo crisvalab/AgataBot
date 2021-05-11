@@ -10,7 +10,7 @@
             "PORT": 3001
         },
         "SENTIMENT-ANALYSIS": {
-            "LISTEN-ADRESS": "0.0.0.0",
+            "LISTEN-ADRESS": "sentimentsapi",
             "PORT": 3003
         }
     }
