@@ -21,7 +21,7 @@ class RouterManager():
     def token_required(self, f):
         @wraps(f)
         def decorator(*args, **kwargs):
-            if request.remote_addr != 'REPLACE WITH 127.0.0.1' and not '127' in request.remote_addr:
+            if not '172' in request.remote_addr:
                 if 'x-access-tokens' in request.headers:
                     token = request.headers['x-access-tokens']
                     try:
