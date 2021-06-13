@@ -38,13 +38,6 @@ Here is an example of how to start working with **Agata Cloud**. First you will 
 
 ```shell
 >>> git clone https://github.com/CristianValero/AgataBot.git
->>> python3 setup.py
-
->>> cd Bridge-API/
->>> python3
->>> from apiservice import db
->>> db.create_all()
-
 >>> docker-compose up
 ```
 
